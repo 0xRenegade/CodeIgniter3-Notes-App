@@ -12,7 +12,7 @@
                         <?=$this->session->flashdata('errors')?>
                     </div>
                 <?php endif; ?>
-                <form id="create-note-form" action="/index.php/notes/store" method="POST">
+                <form id="create-note-form" action="" method="POST">
                     <div class="form-group">
                         <label for="title">Note Title: </label>
                         <input type="text" class="form-control" id="title" name="title">
@@ -20,12 +20,13 @@
                     <div class="form-group">
                         <label for="text">Note Text: </label>
                         <textarea class="form-control" id="text" rows="3" name="text"></textarea>
-                    </div>  
-                    
+                    </div>
                 </form> 
+                <div class="status">
+                </div>
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <button type="submit" form="create-note-form" class="btn btn-outline-primary">
+                <button type="submit" id="create-note-form-button" form="create-note-form" class="btn btn-outline-primary">
                     Save Note
                 </button>
             </div>
