@@ -9,3 +9,4 @@
 </head>
 <body>
     <main id="app">
+        <div class="container">
