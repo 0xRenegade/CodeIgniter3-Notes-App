@@ -5,18 +5,23 @@
         </h1>
     </div>
 </div>
-<div class="row">
-    <? foreach ($notes as $note): ?>
+<?php if (count($notes) < 1 || !$notes) { ?>
+    <div class="error">
+        There are no notes available.
+    </div>
+<?php } else { ?>
+<div class="row"> 
+    <?php foreach ($notes as $note) { ?>
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3">
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        <?=$note['title']?>
+                        <?=$note->title?>
                     </h3>
                 </div>
                 <div class="card-body">
                     <div class="card-text">
-                        <?=$notes['text']?>
+                        <?=$note->text?>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -34,5 +39,6 @@
                 </div>
             </div>
         </div>
-    <? endforeach; ?>
+    <?php } ?>
 </div>
+<?php } ?>
