@@ -5,7 +5,7 @@ class Notes extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->model('Notes_model', 'note');
+        $this->load->model('Notes_model', 'notes');
     }
 
     /*
