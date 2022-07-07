@@ -23,7 +23,7 @@ class Notes extends CI_Controller {
     */
     public function show($id) {
         $data['notes'] = $this->notes->get($id);
-        $data['title'] = $data['notes']->{'title'};
+        // $data['title'] = $data['notes']->title;
         $this->load->view('templates/header');
         $this->load->view('notes/show', $data);
         $this->load->view('templates/footer');
@@ -43,19 +43,41 @@ class Notes extends CI_Controller {
         Save the submitted note
     */
     public function store() {
-        $this->form_validation->set_rules('title', 'Note Title', 'required');
-        $this->form_validation->set_rules('text', 'Note Text', 'required');
-    
-        if (!$this->form_validation->run()) {
+        $post = $this->input->post();
+        $message = '';
 
-            $this->session->set_flashdata('errors', validation_errors());
-            redirect(base_url('notes/create'));
+        if (!$post['title'] || $post['title'] == '') {
+            $message = 'Title field is empty. Please enter a valid title.';
 
-        } else {
+            echo json_encode([
+                'res' => 'error',
+                'message' => $message
+            ]);
+            die();
+        } 
+        
+        if (!$post['text'] || $post['text'] == '') {
+            $message = 'Text field is empty. Please enter valid text.';
 
-            $this->notes->store();
-            $this->session->set_flashdata('success', "Saved Successfully!");
-            redirect(base_url('notes'));
+            echo json_encode([
+                'res' => 'error',
+                'message' => $message
+            ]);
+            die();
+        }
+
+        $note = $this->notes->store($post);
+
+        if ($note) {
+
+            $message = 'Note created successfully! Redirecting you to your new note...';
+            // redirect(base_url('notes/'.$note->id));
+            echo json_encode([
+                'res' => 'success',
+                'message' => $message,
+                'note_id' => $note
+            ]);
+            die();
 
         } 
     }
