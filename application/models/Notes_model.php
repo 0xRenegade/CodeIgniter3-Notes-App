@@ -24,7 +24,11 @@ class Notes_model extends CI_Model {
         ];
  
         $result = $this->db->insert('notes', $data);
-        return $result;
+
+        if ($result) {
+            $id = $this->db->insert_id();
+            return $id;
+        }
     }
  
     /*
