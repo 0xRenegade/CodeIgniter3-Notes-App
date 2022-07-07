@@ -13,9 +13,9 @@ class Notes extends CI_Controller {
     */
     public function index() {
         $data['notes'] = $this->notes->get_all();
-        $this->load->view('layout/header');
+        $this->load->view('templates/header');
         $this->load->view('notes/index', $data);
-        $this->load->view('layout/footer');
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -24,9 +24,9 @@ class Notes extends CI_Controller {
     public function show($id) {
         $data['notes'] = $this->notes->get($id);
         $data['title'] = $data['notes']->{'title'};
-        $this->load->view('layout/header');
+        $this->load->view('templates/header');
         $this->load->view('notes/show', $data);
-        $this->load->view('layout/footer');
+        $this->load->view('templates/footer');
     }
 
     /*
@@ -34,9 +34,9 @@ class Notes extends CI_Controller {
     */
     public function create() {
         $data['title'] = "Create Note";
-        $this->load->view('layout/header');
+        $this->load->view('templates/header');
         $this->load->view('notes/create',$data);
-        $this->load->view('layout/footer');     
+        $this->load->view('templates/footer');     
     }
     
     /*
@@ -66,9 +66,9 @@ class Notes extends CI_Controller {
     public function edit($id) {
         $data['notes'] = $this->project->get($id);
         $data['title'] = "Edit Notes";
-        $this->load->view('layout/header');
+        $this->load->view('templates/header');
         $this->load->view('notes/edit', $data);
-        $this->load->view('layout/footer');     
+        $this->load->view('templates/footer');     
     }
     
     /*
