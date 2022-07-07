@@ -1,3 +1,6 @@
 main#app {
 	min-height: 85vh;
 }
+.status {
+	display: none;
+}
