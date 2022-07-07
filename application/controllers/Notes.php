@@ -53,7 +53,7 @@ class Notes extends CI_Controller {
 
         } else {
 
-            $this->project->store();
+            $this->notes->store();
             $this->session->set_flashdata('success', "Saved Successfully!");
             redirect(base_url('notes'));
 
@@ -64,7 +64,7 @@ class Notes extends CI_Controller {
         Edit a note
     */
     public function edit($id) {
-        $data['notes'] = $this->project->get($id);
+        $data['notes'] = $this->notes->get($id);
         $data['title'] = "Edit Notes";
         $this->load->view('templates/header');
         $this->load->view('notes/edit', $data);
@@ -85,7 +85,7 @@ class Notes extends CI_Controller {
             
         } else {
 
-            $this->project->update($id);
+            $this->notes->update($id);
             $this->session->set_flashdata('success', "Updated Successfully!");
             redirect(base_url('notes'));
             
@@ -96,7 +96,7 @@ class Notes extends CI_Controller {
         Delete a note
     */
     public function delete($id) {
-        $item = $this->project->delete($id);
+        $item = $this->notes->delete($id);
         $this->session->set_flashdata('success', "Deleted Successfully!");
         redirect(base_url('notes'));
     }
