@@ -101,3 +101,5 @@ class Notes extends CI_Controller {
         redirect(base_url('notes'));
     }
 }
+
+?>
