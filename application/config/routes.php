@@ -54,3 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['notes']                           = "notes/index";
+$route['notes/create']                    = "notes/create";
+$route['notes/store']['post']             = "notes/store";
+$route['notes/edit/(:num)']               = "notes/edit/$1";
+$route['notes/update/(:num)']['put']      = "notes/update/$1";
+$route['notes/delete/(:num)']['delete']   = "notes/delete/$1";
