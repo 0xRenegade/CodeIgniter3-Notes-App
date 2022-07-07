@@ -1,0 +1,5 @@
+<?
+    $_ENV['DB'] = '';
+    $_ENV['DB_USER'] = '';
+    $_ENV['DB_PASSWORD'] = '';
+?>
