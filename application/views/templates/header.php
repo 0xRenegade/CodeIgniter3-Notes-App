@@ -7,3 +7,4 @@
     <title><?=$site_title?></title>
 </head>
 <body>
+    <main id="app">
