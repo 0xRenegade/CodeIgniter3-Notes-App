@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include('./env_vars.php');
 
 /*
 | -------------------------------------------------------------------
@@ -75,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	   => '',
-	'hostname' => $_ENV['DB_HOST_URL'],
-	'username' => $_ENV['DB_USER'],
-	'password' => $_ENV['DB_PASSWORD'],
-	'database' => $_ENV['DB'],
-	'dbdriver' => 'mysqli',
+	'dsn'	   => "mysql:host=127.0.0.1;dbname=db_codeigniter",
+	'hostname' => '',
+	'username' => '',
+	'password' => '',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

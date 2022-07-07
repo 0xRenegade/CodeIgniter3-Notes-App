@@ -1,6 +1,0 @@
-<?
-    $_ENV['DB_HOST_URL'] = '';
-    $_ENV['DB'] = '';
-    $_ENV['DB_USER'] = '';
-    $_ENV['DB_PASSWORD'] = '';
-?>
