@@ -7,12 +7,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <? if ($this->session->flashdata('errors')): ?>
-                    <div class="alert alert-danger">
-                        <?=$this->session->flashdata('errors')?>
-                    </div>
-                <? endif; ?>
-                <form id="create-note-form" action="<?=base_url('notes/update'.$note->id)?>" method="PUT">
+                <form id="edit-note-form" action="" method="PUT">
                     <div class="form-group">
                         <label for="title">Note Title: </label>
                         <input type="text" class="form-control" id="title" name="title">
@@ -21,10 +16,12 @@
                         <label for="text">Note Text: </label>
                         <textarea class="form-control" id="text" rows="3" name="text"></textarea>
                     </div>  
-                </form> 
+                </form>
+                <div class="status">
+                </div
             </div>
             <div class="card-footer">
-                <button type="submit" for="create-note-form" class="btn btn-outline-primary">
+                <button type="submit" id="edit-note-form-button" form="edit-note-form" class="btn btn-outline-primary">
                     Save Note
                 </button>
             </div>
