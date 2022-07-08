@@ -4,3 +4,10 @@ main#app {
 .status {
 	display: none;
 }
+.primary-button-link {
+	text-decoration: none;
+	color: white;
+}
+.primary-button-link:hover {
+	color: lightgrey;
+}
