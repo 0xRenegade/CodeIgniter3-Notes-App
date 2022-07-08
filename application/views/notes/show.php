@@ -11,11 +11,10 @@
                     <?=$notes->text?>
                 </div>
             </div>
-            <div class="card-footer">
-                <button class="btn btn-warning">
-                    <a href="<?=base_url()?>notes/edit/<?=$notes->id?>">Edit</a>
+            <div class="card-footer d-flex justify-content-end">
+                <button class="btn btn-warning button-link">
+                    <a class="button-link" href="<?=base_url()?>notes/edit/<?=$notes->id?>">Edit</a>
                 </button>
-
                 <button data-id="<?=$notes->id?>" class="btn btn-danger delete-btn">
                     Delete
                 </button>

@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <button type="submit" id="create-note-form-button" form="create-note-form" class="btn btn-outline-primary">
+                <button type="submit" id="create-note-form-button" form="create-note-form" class="btn btn-primary">
                     Save Note
                 </button>
             </div>
