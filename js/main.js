@@ -60,4 +60,48 @@ $(document).ready(() => {
             }
         })
     });
+
+    $('.delete-btn').on('click', (e) => {
+        e.preventDefault();
+
+        let button = $(e.currentTarget);
+
+        $.confirm({
+            title: "Are you sure?",
+            content: "Delete this note?",
+            buttons: {
+                yes: () => {
+                    const id = button.attr('data-id');
+                    const url = window.location.origin + '/notes/delete';
+                    const returnUrl = window.location.origin + '/notes';
+                    const data = {
+                        'id': id
+                    };
+
+                    $.ajax({
+                        type: 'post',
+                        url: url,
+                        dataType: 'json',
+                        data: data,
+                        success: (res) => {
+                            console.log(res)
+                            if (res.res == 'success') {
+                                setTimeout(() => {
+                                    window.location.replace(returnUrl);
+                                }, 1000);
+                            } else if (res.res == 'error') {
+                                console.log(res.error);
+                            }
+                        },
+                        error: (err) => {
+                            console.log(err.responseText);
+                        }
+                    })
+                },
+                no: () => {
+                    this.close();
+                }
+            }
+        }); 
+    });
 });

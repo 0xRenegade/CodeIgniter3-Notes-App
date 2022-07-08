@@ -148,10 +148,23 @@ class Notes extends CI_Controller {
     /*
         Delete a note
     */
-    public function delete($id) {
-        $item = $this->notes->delete($id);
-        $this->session->set_flashdata('success', "Deleted Successfully!");
-        redirect(base_url('notes'));
+    public function delete() {
+        $id = $this->input->post();
+        $id = $id['id'];
+        $deleted = $this->notes->delete($id);
+
+        if ($deleted) {
+            echo json_encode([
+                'res' => 'success'
+            ]);
+            die();
+        } else {
+            echo json_encode([
+                'res' => 'error',
+                'error' => $deleted
+            ]);
+            die();
+        }
     }
 }
 

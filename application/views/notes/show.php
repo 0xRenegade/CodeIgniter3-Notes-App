@@ -16,8 +16,8 @@
                     <a href="<?=base_url()?>notes/edit/<?=$notes->id?>">Edit</a>
                 </button>
 
-                <button class="btn btn-danger">
-                    <a href="<?=base_url()?>notes/delete/<?=$notes->id?>">Delete</a>
+                <button data-id="<?=$notes->id?>" class="btn btn-danger delete-btn">
+                    Delete
                 </button>
             </div>
         </div>
