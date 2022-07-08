@@ -24,7 +24,7 @@
                 <div class="status">
                 </div
             </div>
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-end">
                 <button type="submit" id="edit-note-form-button" form="edit-note-form" class="btn btn-outline-primary">
                     Save Note
                 </button>

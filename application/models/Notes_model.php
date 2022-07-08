@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+ini_set('display_errors', 1);
 class Notes_model extends CI_Model {
     public function __construct() {
         $this->load->database();
@@ -43,14 +44,19 @@ class Notes_model extends CI_Model {
     /*
         Update or Modify a note in the database
     */
-    public function update($id) {
+    public function update($note) {  
         $data = [
-            'title'        => $this->input->post('title'),
-            'text' => $this->input->post('text')
+            'title' => $note['title'],
+            'text' => $note['text']
         ];
- 
-        $result = $this->db->where('id',$id)->update('notes',$data);
-        return $result;              
+
+        $result = $this->db->where('id', $note['id'])->update('notes', $data);
+
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
     }
  
     /*

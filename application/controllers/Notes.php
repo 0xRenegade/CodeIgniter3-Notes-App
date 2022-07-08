@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+ini_set('display_errors', 1);
+error_reporting(E_ERROR);
 class Notes extends CI_Controller {
     public function __construct() {
         parent::__construct();
@@ -96,22 +98,51 @@ class Notes extends CI_Controller {
     /*
         Update the submitted note
     */
-    public function update($id) {
-        $this->form_validation->set_rules('title', 'Note Title', 'required');
-        $this->form_validation->set_rules('text', 'Note Text', 'required');
-    
-        if (!$this->form_validation->run()) {
+    public function update() {
+        $put = $this->input->post();
+        $id = $this->input->get();
+        $id = $id['id'];
+        $message = '';
 
-            $this->session->set_flashdata('errors', validation_errors());
-            redirect(base_url('notes/edit/' . $id));
-            
-        } else {
+        $data = [
+            'id' => $id,
+            'title' => $put['title'],
+            'text' => $put['text']
+        ];
 
-            $this->notes->update($id);
-            $this->session->set_flashdata('success', "Updated Successfully!");
-            redirect(base_url('notes'));
-            
+        if (!$put['title'] || $put['title'] == '') {
+            $message = 'Title field is empty. Please enter a valid title.';
+
+            echo json_encode([
+                'res' => 'error',
+                'message' => $message
+            ]);
+            die();
         } 
+        
+        if (!$put['text'] || $put['text'] == '') {
+            $message = 'Text field is empty. Please enter valid text.';
+
+            echo json_encode([
+                'res' => 'error',
+                'message' => $message
+            ]);
+            die();
+        }
+
+        $note = $this->notes->update($data);
+
+        if ($note) {
+
+            $message = 'Note updated successfully! Redirecting you to your note...';
+            echo json_encode([
+                'res' => 'success',
+                'message' => $message,
+                'note_id' => $id
+            ]);
+            die();
+
+        }
     }
     
     /*
