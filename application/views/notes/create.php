@@ -7,11 +7,6 @@
                 </h3>
             </div>
             <div class="card-body">
-                <?php if ($this->session->flashdata('errors')): ?>
-                    <div class="alert alert-danger">
-                        <?=$this->session->flashdata('errors')?>
-                    </div>
-                <?php endif; ?>
                 <form id="create-note-form" action="" method="POST">
                     <div class="form-group">
                         <label for="title">Note Title: </label>
