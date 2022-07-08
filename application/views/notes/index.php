@@ -7,8 +7,11 @@
 </div>
 <?php if (count($notes) < 1 || !$notes) { ?>
     <div class="error">
-        There are no notes available.
+        There are no notes available.  
     </div>
+    <button class="btn btn-primary">
+        <a class="primary-button-link" href="<?=base_url()?>notes/create">Create one!</a>
+    </button>
 <?php } else { ?>
 <div class="row"> 
     <?php foreach ($notes as $note) { ?>
@@ -33,8 +36,8 @@
                         <a href="<?=base_url()?>notes/edit/<?=$note->id?>">Edit</a>
                     </button>
 
-                    <button class="btn btn-danger">
-                        <a href="<?=base_url()?>notes/delete/<?=$note->id?>">Delete</a>
+                    <button data-id="<?=$note->id?>" class="btn btn-danger delete-btn">
+                        Delete
                     </button>
                 </div>
             </div>
